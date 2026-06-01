@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Timeout_Seconds__c</fullName>
+    <description>Maximum number of seconds the AI agent may spend executing this single step before it is marked as timed out and failed.</description>
+    <inlineHelpText>Default is 30 seconds. Increase for steps that trigger long-running processes (e.g. report generation, large data saves).</inlineHelpText>
+    <defaultValue>30</defaultValue>
+    <label>Timeout (Seconds)</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

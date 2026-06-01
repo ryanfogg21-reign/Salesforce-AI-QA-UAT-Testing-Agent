@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Continue_On_Failure__c</fullName>
+    <description>When checked, the automation agent will continue executing remaining steps even if a step fails. Useful for scripts that need to capture all failures in a single run rather than stopping at the first issue.</description>
+    <inlineHelpText>Check to run all steps even if some fail. Uncheck to stop immediately on the first failure (default).</inlineHelpText>
+    <defaultValue>false</defaultValue>
+    <label>Continue On Failure</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

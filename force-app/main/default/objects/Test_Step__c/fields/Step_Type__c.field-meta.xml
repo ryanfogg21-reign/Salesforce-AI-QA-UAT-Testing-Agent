@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Step_Type__c</fullName>
+    <description>Categorizes the kind of browser interaction this step performs. Used to help the AI agent interpret the instruction and set appropriate timeouts.</description>
+    <inlineHelpText>Navigate = go to a URL. Click = press a button/link. Fill = enter text. Assert = verify something is visible/true. Wait = pause for a condition. Verify = check a field value. Screenshot = capture evidence.</inlineHelpText>
+    <label>Step Type</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value><fullName>Navigate</fullName><default>false</default><label>Navigate</label></value>
+            <value><fullName>Click</fullName><default>false</default><label>Click</label></value>
+            <value><fullName>Fill</fullName><default>false</default><label>Fill</label></value>
+            <value><fullName>Assert</fullName><default>true</default><label>Assert</label></value>
+            <value><fullName>Verify</fullName><default>false</default><label>Verify</label></value>
+            <value><fullName>Wait</fullName><default>false</default><label>Wait</label></value>
+            <value><fullName>Screenshot</fullName><default>false</default><label>Screenshot</label></value>
+            <value><fullName>Multi-Action</fullName><default>false</default><label>Multi-Action</label></value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Description__c</fullName>
+    <description>Natural language instruction sent directly to the Claude computer-use agent to execute in the browser. Write it as you would tell a human tester what to do.</description>
+    <inlineHelpText>Write this as a plain English instruction (e.g. "Click the New button in the top right of the Opportunities list view").</inlineHelpText>
+    <label>Description</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>4</visibleLines>
+</CustomField>

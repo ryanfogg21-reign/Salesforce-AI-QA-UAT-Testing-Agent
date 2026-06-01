@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Timeout_Minutes__c</fullName>
+    <description>Maximum number of minutes the browser automation agent is allowed to spend executing this entire script before timing out and marking the run as an Error.</description>
+    <inlineHelpText>How long (in minutes) to allow before the test run times out. Default is 10 minutes. Increase for long multi-step scripts.</inlineHelpText>
+    <defaultValue>10</defaultValue>
+    <label>Timeout (Minutes)</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

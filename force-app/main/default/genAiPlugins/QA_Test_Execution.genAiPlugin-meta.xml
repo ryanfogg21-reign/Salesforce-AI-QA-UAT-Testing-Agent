@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Handles all AI-driven QA test automation tasks. Executes UI test scripts against Salesforce orgs using browser automation. Can run test scripts, monitor progress, retrieve step-level pass/fail results, and list available scripts.</description>
+    <developerName>QA_Test_Execution</developerName>
+    <masterLabel>QA Test Execution</masterLabel>
+    <language>en_US</language>
+    <pluginType>Topic</pluginType>
+    <scope>User wants to run, trigger, or execute a test script or suite. User asks about QA automation or UI test results. User wants to check run status or see what passed or failed.</scope>
+</GenAiPlugin>

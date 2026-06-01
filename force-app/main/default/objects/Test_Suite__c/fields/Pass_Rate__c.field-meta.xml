@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pass_Rate__c</fullName>
+    <description>Percentage of suite runs where all scripts passed.</description>
+    <inlineHelpText>Automatically calculated from related Test Runs.</inlineHelpText>
+    <label>Pass Rate (%)</label>
+    <precision>5</precision>
+    <required>false</required>
+    <scale>1</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

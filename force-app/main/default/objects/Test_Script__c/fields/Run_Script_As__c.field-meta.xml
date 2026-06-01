@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Run_Script_As__c</fullName>
+    <description>The Salesforce user whose credentials and permissions the browser automation agent will use when executing this test script. Determines what the agent can see and interact with in the UI.</description>
+    <inlineHelpText>Select the user the AI agent will log in as when running this test. The agent will see exactly what this user sees.</inlineHelpText>
+    <label>Run Script As</label>
+    <referenceTo>User</referenceTo>
+    <relationshipLabel>Test Scripts (Run As)</relationshipLabel>
+    <relationshipName>Test_Scripts_Run_As</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

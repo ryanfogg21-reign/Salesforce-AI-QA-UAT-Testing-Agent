@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Max_Actions__c</fullName>
+    <description>Maximum number of individual browser interactions (clicks, keystrokes, scrolls) the AI agent may take to complete this step before giving up. Prevents runaway loops.</description>
+    <inlineHelpText>Default is 20. Raise for complex multi-click flows (e.g. wizard with many fields). Lower for simple single-click assertions.</inlineHelpText>
+    <defaultValue>20</defaultValue>
+    <label>Max Actions</label>
+    <precision>3</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

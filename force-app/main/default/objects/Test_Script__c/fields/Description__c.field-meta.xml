@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Description__c</fullName>
+    <description>Human-readable description of what this test script validates. Used by the AI agent as context when interpreting test steps.</description>
+    <inlineHelpText>Describe what this test script is validating. The AI agent uses this as context when executing steps.</inlineHelpText>
+    <label>Description</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>4</visibleLines>
+</CustomField>

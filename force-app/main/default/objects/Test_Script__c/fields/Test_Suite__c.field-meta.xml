@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Test_Suite__c</fullName>
+    <description>The Test Suite this script belongs to. Determines default target org URL, Named Credential, and Run As user when not overridden at the script level.</description>
+    <inlineHelpText>Assign this script to a suite to group it with related scripts and inherit suite-level settings.</inlineHelpText>
+    <label>Test Suite</label>
+    <referenceTo>Test_Suite__c</referenceTo>
+    <relationshipLabel>Test Scripts</relationshipLabel>
+    <relationshipName>Test_Scripts</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

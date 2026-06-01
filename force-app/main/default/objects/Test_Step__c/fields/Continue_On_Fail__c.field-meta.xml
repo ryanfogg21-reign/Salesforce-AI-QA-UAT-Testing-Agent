@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Continue_On_Fail__c</fullName>
+    <description>When checked, the test run continues to the next step even if this step fails. Overrides the parent Test Script setting for this specific step.</description>
+    <inlineHelpText>Check to continue to the next step even if this one fails (overrides the script-level setting).</inlineHelpText>
+    <defaultValue>false</defaultValue>
+    <label>Continue On Fail</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

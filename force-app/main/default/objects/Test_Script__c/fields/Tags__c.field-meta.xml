@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tags__c</fullName>
+    <description>Comma-separated tags for grouping and filtering test scripts. Examples: opportunity, lead-conversion, mobile, release-24.3</description>
+    <inlineHelpText>Enter comma-separated tags to group scripts (e.g. opportunity, pipeline, sprint-12). Used for bulk filtering and scheduled runs.</inlineHelpText>
+    <label>Tags</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

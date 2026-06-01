@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Priority__c</fullName>
+    <description>Execution priority for this script when running as part of a Test Suite. High priority scripts run first. Used to ensure critical paths are tested before lower-priority flows.</description>
+    <inlineHelpText>P1 = Critical (run first), P2 = High, P3 = Medium, P4 = Low (run last). Used when executing a full Test Suite.</inlineHelpText>
+    <label>Priority</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>P1 - Critical</fullName>
+                <default>false</default>
+                <label>P1 - Critical</label>
+            </value>
+            <value>
+                <fullName>P2 - High</fullName>
+                <default>true</default>
+                <label>P2 - High</label>
+            </value>
+            <value>
+                <fullName>P3 - Medium</fullName>
+                <default>false</default>
+                <label>P3 - Medium</label>
+            </value>
+            <value>
+                <fullName>P4 - Low</fullName>
+                <default>false</default>
+                <label>P4 - Low</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Session_Id__c</fullName>
+    <description>Unique identifier for the corresponding browser automation session on the microservice. Used to correlate Salesforce run records with service-side logs and screenshots.</description>
+    <inlineHelpText>Links this record to the browser service session. Used for debugging and screenshot retrieval.</inlineHelpText>
+    <label>Session ID</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expected_Outcome__c</fullName>
+    <description>What the browser should show after this step completes successfully. The AI agent compares the actual screen state against this description to determine pass or fail.</description>
+    <inlineHelpText>Describe what should be visible or true after this step (e.g. "The New Opportunity form is open with a blank Name field"). The AI uses this to judge pass/fail.</inlineHelpText>
+    <label>Expected Outcome</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

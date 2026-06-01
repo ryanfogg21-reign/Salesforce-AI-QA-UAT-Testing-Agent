@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Run_Date__c</fullName>
+    <description>The date and time when this test script was most recently executed. Automatically updated by the automation agent.</description>
+    <inlineHelpText>Automatically updated after each test run.</inlineHelpText>
+    <label>Last Run Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>
