@@ -58,11 +58,24 @@ public with sharing class BrowserAgentCallout {
                 'steps'              => buildStepPayload(steps)
             };
 
+            // Read Bearer token from Custom Metadata
+            String apiKey = '';
+            List<QA_Tester_Config__mdt> configs = [
+                SELECT Service_API_Key__c
+                FROM QA_Tester_Config__mdt
+                WHERE DeveloperName = 'Default'
+                LIMIT 1
+            ];
+            if (!configs.isEmpty() && String.isNotBlank(configs[0].Service_API_Key__c)) {
+                apiKey = configs[0].Service_API_Key__c;
+            }
+
             // Fire the callout
             HttpRequest req = new HttpRequest();
             req.setEndpoint('callout:' + namedCredential + '/execute-test');
             req.setMethod('POST');
             req.setHeader('Content-Type', 'application/json');
+            req.setHeader('Authorization', 'Bearer ' + apiKey);
             req.setBody(JSON.serialize(payload));
             req.setTimeout(120000); // 2 min max for the initial handshake
 
