@@ -11,7 +11,7 @@ const client = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
-const COMPUTER_USE_MODEL = process.env.CLAUDE_MODEL ?? 'claude-opus-4-5';
+const COMPUTER_USE_MODEL = process.env.CLAUDE_MODEL ?? 'claude-sonnet-4-6';
 
 // Computer-use tool definition — typed as `any` because the SDK's Tool type
 // doesn't yet include the beta computer_20241022 variant in all versions.

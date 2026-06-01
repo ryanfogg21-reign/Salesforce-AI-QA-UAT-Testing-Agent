@@ -7,12 +7,17 @@ FROM mcr.microsoft.com/playwright:v1.48.0-jammy
 
 WORKDIR /app
 
-# Install dependencies (production only in final image)
+# Install ALL dependencies (including devDeps needed for tsc build)
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm ci
 
-# Copy compiled TypeScript output
-COPY dist/ ./dist/
+# Copy source and compile TypeScript
+COPY tsconfig.json ./
+COPY src/ ./src/
+RUN npm run build
+
+# Remove dev dependencies after build
+RUN npm prune --omit=dev
 
 # Non-root user for security
 USER pwuser

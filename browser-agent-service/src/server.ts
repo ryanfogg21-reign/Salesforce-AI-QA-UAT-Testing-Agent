@@ -120,7 +120,7 @@ export function startServer(): void {
   app.listen(PORT, () => {
     logger.info(null, `Browser agent service started`, {
       port:       PORT,
-      model:      process.env.CLAUDE_MODEL ?? 'claude-opus-4-5',
+      model:      process.env.CLAUDE_MODEL ?? 'claude-sonnet-4-6',
       maxSessions: process.env.MAX_CONCURRENT_SESSIONS ?? '5',
     });
   });
