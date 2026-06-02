@@ -1,0 +1,18 @@
+<template>
+    <div class="slds-p-around_small">
+        <lightning-button
+            label="Run Script"
+            variant="brand"
+            icon-name="utility:play"
+            onclick={handleRun}
+            disabled={isRunning}>
+        </lightning-button>
+        <template if:true={isRunning}>
+            <lightning-spinner
+                alternative-text="Starting test run..."
+                size="small"
+                class="slds-m-left_small">
+            </lightning-spinner>
+        </template>
+    </div>
+</template>
