@@ -18,6 +18,7 @@ export interface TestStep {
 export interface ExecuteTestRequest {
   sessionId: string;
   testRunId: string;
+  testScriptId: string;
   testScriptName: string;
   callbackUrl: string;
   sfAccessToken: string;
@@ -37,7 +38,8 @@ export interface StepResult {
   reason: string;
   actionsCount: number;
   durationMs: number;
-  screenshotBase64?: string; // final screenshot for this step
+  screenshotBase64?: string;
+  screenshotContentDocumentId?: string;
 }
 
 export interface SessionStatus {

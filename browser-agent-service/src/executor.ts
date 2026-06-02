@@ -21,6 +21,7 @@ import {
   buildStepMessage,
   buildToolResultMessage,
 } from './claudeClient.js';
+import { uploadStepScreenshot } from './salesforceFiles.js';
 import { sessionStore } from './sessionStore.js';
 import { postCallback } from './callbackClient.js';
 import { logger } from './logger.js';
@@ -32,7 +33,7 @@ import { logger } from './logger.js';
  * On completion, POSTs results back to the Salesforce callback URL.
  */
 export async function executeTestScript(req: ExecuteTestRequest): Promise<void> {
-  const { sessionId, testRunId, steps, callbackUrl, sfAccessToken } = req;
+  const { sessionId, testRunId, testScriptId, steps, callbackUrl, sfAccessToken } = req;
   const startTime = Date.now();
 
   // Initialize session state
@@ -117,6 +118,20 @@ export async function executeTestScript(req: ExecuteTestRequest): Promise<void> 
       logger.info(sessionId, `Executing step ${step.stepNumber}: ${step.description.slice(0, 80)}`);
 
       const result = await executeStep(page, step, sessionId);
+
+      // Upload final screenshot to Salesforce and link to Test_Step__c + Test_Script__c
+      if (result.screenshotBase64 && testScriptId) {
+        result.screenshotContentDocumentId = await uploadStepScreenshot({
+          sessionId,
+          orgBaseUrl,
+          sfAccessToken,
+          stepNumber:      step.stepNumber,
+          stepId:          step.id,
+          testScriptId,
+          screenshotBase64: result.screenshotBase64,
+        }) ?? undefined;
+      }
+
       stepResults.push(result);
 
       if (result.passed) {
