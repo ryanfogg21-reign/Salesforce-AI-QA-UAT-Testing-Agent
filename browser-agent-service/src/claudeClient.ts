@@ -15,11 +15,43 @@ const COMPUTER_USE_MODEL = process.env.CLAUDE_MODEL ?? 'claude-opus-4-8';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const COMPUTER_TOOL: any = {
-  type:              'computer_20250124',
-  name:              'computer',
-  display_width_px:  VIEWPORT_WIDTH,
-  display_height_px: VIEWPORT_HEIGHT,
-  display_number:    1,
+  type: 'custom',
+  name: 'computer',
+  description: 'Perform mouse and keyboard actions to control the browser UI.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      action: {
+        type: 'string',
+        enum: ['screenshot', 'left_click', 'right_click', 'double_click', 'type', 'key', 'scroll', 'mouse_move', 'left_click_drag'],
+        description: 'The action to perform',
+      },
+      coordinate: {
+        type: 'array',
+        items: { type: 'integer' },
+        description: '[x, y] pixel coordinate for mouse actions',
+      },
+      startCoordinate: {
+        type: 'array',
+        items: { type: 'integer' },
+        description: 'Starting [x, y] coordinate for left_click_drag',
+      },
+      text: {
+        type: 'string',
+        description: 'Text to type, or key name to press (e.g. "Return", "Tab", "ctrl+a")',
+      },
+      direction: {
+        type: 'string',
+        enum: ['up', 'down', 'left', 'right'],
+        description: 'Scroll direction',
+      },
+      amount: {
+        type: 'integer',
+        description: 'Number of scroll clicks',
+      },
+    },
+    required: ['action'],
+  },
 };
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -66,11 +98,10 @@ export async function askClaude(
 ): Promise<ClaudeStepDecision> {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const response = await (client.beta.messages.create as any)({
+  const response = await (client.messages.create as any)({
     model:      COMPUTER_USE_MODEL,
     max_tokens: 1024,
     system:     SYSTEM_PROMPT,
-    betas:      ['computer-use-2025-01-24'],
     tools:      [COMPUTER_TOOL],
     messages:   conversationHistory,
   }) as Anthropic.Message;
