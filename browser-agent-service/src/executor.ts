@@ -78,7 +78,11 @@ export async function executeTestScript(req: ExecuteTestRequest): Promise<void> 
       + `&retURL=${encodeURIComponent(retURL)}`;
 
     logger.info(sessionId, `Authenticating browser via frontdoor.jsp`, { retURL });
-    await page.goto(loginUrl, { waitUntil: 'networkidle', timeout: 30_000 });
+    // Use 'domcontentloaded' — Salesforce Lightning never reaches 'networkidle'
+    // because it makes continuous background XHR requests.
+    await page.goto(loginUrl, { waitUntil: 'domcontentloaded', timeout: 30_000 });
+    // Give Lightning time to fully render before Claude starts interacting
+    await page.waitForTimeout(4000);
     logger.info(sessionId, `Browser authenticated, current URL: ${page.url()}`);
 
     const stepResults: StepResult[] = [];
