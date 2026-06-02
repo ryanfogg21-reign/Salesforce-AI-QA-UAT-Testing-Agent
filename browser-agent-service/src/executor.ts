@@ -206,8 +206,9 @@ async function executeStep(
   const conversation: Anthropic.MessageParam[] = [];
   let actionsCount = 0;
 
-  // Apply per-step timeout
-  const stepTimeoutMs = step.timeoutSeconds * 1_000;
+  // Apply per-step timeout — enforce a minimum of 90s because each Claude
+  // API call alone takes 3-10s, and a step needs several round-trips.
+  const stepTimeoutMs = Math.max(step.timeoutSeconds * 1_000, 90_000);
   const stepDeadline  = Date.now() + stepTimeoutMs;
 
   try {
@@ -238,20 +239,9 @@ async function executeStep(
         step.expectedOutcome
       );
 
-      // Add Claude's response to conversation history
-      if (decision.actions.length > 0) {
-        // Claude used tools — record this in conversation
-        // (we reconstruct the assistant message from the actions)
-        conversation.push({
-          role: 'assistant',
-          content: decision.actions.map((a, i) => ({
-            type:  'tool_use' as const,
-            id:    `tool_${actionsCount}_${i}`,
-            name:  'computer',
-            input: a,
-          })),
-        });
-      }
+      // Always record Claude's full response in conversation using rawContent
+      // so tool_use block IDs are preserved exactly as the API returned them.
+      conversation.push({ role: 'assistant', content: decision.rawContent });
 
       // If Claude is done, return the verdict
       if (decision.isComplete && decision.verdict) {
@@ -268,12 +258,14 @@ async function executeStep(
         };
       }
 
-      // Execute each action Claude requested and feed back a screenshot
+      // Execute each action and collect the real tool IDs from rawContent
       const toolUseIds: string[] = [];
-      for (let i = 0; i < decision.actions.length; i++) {
-        const action = decision.actions[i];
-        toolUseIds.push(`tool_${actionsCount}_${i}`);
-
+      for (const block of decision.rawContent) {
+        if (block.type !== 'tool_use') continue;
+        toolUseIds.push(block.id);
+        const action = decision.actions.find(
+          (a) => JSON.stringify(a) === JSON.stringify(block.input)
+        ) ?? (block.input as (typeof decision.actions)[0]);
         if (action.action !== 'screenshot') {
           await executeAction(page, action, sessionId);
           actionsCount++;
