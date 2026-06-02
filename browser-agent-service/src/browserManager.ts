@@ -18,8 +18,15 @@ export async function launchBrowser(): Promise<{ browser: Browser; context: Brow
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
+      '--disable-dev-shm-usage',   // use /tmp instead of /dev/shm (required in Docker)
       '--disable-gpu',
+      '--no-zygote',               // skip the zygote process — reduces memory in containers
+      '--single-process',          // run renderer in the browser process — lower RAM overhead
+      '--disable-extensions',
+      '--disable-background-networking',
+      '--disable-default-apps',
+      '--no-first-run',
+      '--mute-audio',
     ],
   });
 

@@ -52,7 +52,9 @@ export async function executeTestScript(req: ExecuteTestRequest): Promise<void> 
     target:  req.targetUrl,
   });
 
+  logger.info(sessionId, `Launching Chromium browser...`);
   const { browser, page } = await launchBrowser();
+  logger.info(sessionId, `Browser launched successfully`);
 
   try {
     // ── Log in to Salesforce via frontdoor.jsp ─────────────────────────────────
