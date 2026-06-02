@@ -66,7 +66,7 @@ export async function askClaude(
 ): Promise<ClaudeStepDecision> {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const response = await (client.messages.create as any)({
+  const response = await (client.beta.messages.create as any)({
     model:      COMPUTER_USE_MODEL,
     max_tokens: 1024,
     system:     SYSTEM_PROMPT,
