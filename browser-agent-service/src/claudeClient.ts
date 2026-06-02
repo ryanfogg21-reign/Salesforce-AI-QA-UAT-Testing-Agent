@@ -13,11 +13,9 @@ const client = new Anthropic({
 
 const COMPUTER_USE_MODEL = process.env.CLAUDE_MODEL ?? 'claude-sonnet-4-6';
 
-// Computer-use tool definition — typed as `any` because the SDK's Tool type
-// doesn't yet include the beta computer_20241022 variant in all versions.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const COMPUTER_TOOL: any = {
-  type:              'computer_20241022',
+  type:              'computer_20250124',
   name:              'computer',
   display_width_px:  VIEWPORT_WIDTH,
   display_height_px: VIEWPORT_HEIGHT,
@@ -72,7 +70,7 @@ export async function askClaude(
     model:      COMPUTER_USE_MODEL,
     max_tokens: 1024,
     system:     SYSTEM_PROMPT,
-    betas:      ['computer-use-2024-10-22'],
+    betas:      ['computer-use-2025-01-24'],
     tools:      [COMPUTER_TOOL],
     messages:   conversationHistory,
   }) as Anthropic.Message;
