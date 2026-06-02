@@ -55,11 +55,31 @@ export async function executeTestScript(req: ExecuteTestRequest): Promise<void> 
   const { browser, page } = await launchBrowser();
 
   try {
-    // Navigate to target org if provided
+    // ── Log in to Salesforce via frontdoor.jsp ─────────────────────────────────
+    // The sfAccessToken (UserInfo.getSessionId()) lets us authenticate the
+    // Playwright browser without needing a username/password.
+    // frontdoor.jsp establishes the session and redirects to retURL.
+    const orgBaseUrl = callbackUrl.replace('/services/apexrest/qatester/callback', '');
+
+    let retURL = '/';
     if (req.targetUrl) {
-      logger.info(sessionId, `Navigating to target org: ${req.targetUrl}`);
-      await page.goto(req.targetUrl, { waitUntil: 'networkidle', timeout: 30_000 });
+      try {
+        // If it's a full URL, extract just the path portion for retURL
+        const parsed = new URL(req.targetUrl);
+        retURL = parsed.pathname + parsed.search + parsed.hash;
+      } catch {
+        // Already a relative path
+        retURL = req.targetUrl.startsWith('/') ? req.targetUrl : '/' + req.targetUrl;
+      }
     }
+
+    const loginUrl = `${orgBaseUrl}/secur/frontdoor.jsp`
+      + `?sid=${encodeURIComponent(sfAccessToken)}`
+      + `&retURL=${encodeURIComponent(retURL)}`;
+
+    logger.info(sessionId, `Authenticating browser via frontdoor.jsp`, { retURL });
+    await page.goto(loginUrl, { waitUntil: 'networkidle', timeout: 30_000 });
+    logger.info(sessionId, `Browser authenticated, current URL: ${page.url()}`);
 
     const stepResults: StepResult[] = [];
     let stepsPassed = 0;
