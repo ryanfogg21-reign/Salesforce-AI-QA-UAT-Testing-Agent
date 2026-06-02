@@ -3,7 +3,7 @@
 # Uses the official Playwright image which includes all browser dependencies.
 # ─────────────────────────────────────────────────────────────────────────────
 
-FROM mcr.microsoft.com/playwright:v1.48.0-jammy
+FROM mcr.microsoft.com/playwright:v1.60.0-jammy
 
 WORKDIR /app
 
