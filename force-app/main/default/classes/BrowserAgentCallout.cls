@@ -47,6 +47,7 @@ public with sharing class BrowserAgentCallout {
             Map<String, Object> payload = new Map<String, Object>{
                 'sessionId'          => run.Session_Id__c,
                 'testRunId'          => run.Id,
+                'testScriptId'       => run.Test_Script__c,
                 'testScriptName'     => run.Test_Script__r.Name,
                 'callbackUrl'        => callbackUrl,
                 'sfAccessToken'      => UserInfo.getSessionId(),
