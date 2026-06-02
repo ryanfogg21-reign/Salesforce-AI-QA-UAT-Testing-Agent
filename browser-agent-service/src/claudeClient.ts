@@ -11,7 +11,7 @@ const client = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
-const COMPUTER_USE_MODEL = process.env.CLAUDE_MODEL ?? 'claude-sonnet-4-6';
+const COMPUTER_USE_MODEL = process.env.CLAUDE_MODEL ?? 'claude-opus-4-8';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const COMPUTER_TOOL: any = {
